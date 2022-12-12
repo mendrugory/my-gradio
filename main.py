@@ -52,5 +52,3 @@ def greet(name):
 
 demo = gradio.Interface(fn=greet, inputs="text", title=f'Hello from Task {task.id}', outputs="text")
 demo.launch()
-
-
