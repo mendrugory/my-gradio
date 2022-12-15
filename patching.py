@@ -1,16 +1,13 @@
+import subprocess
 from clearml import Task
 import gradio.networking
-import requests
 
 original_networking_start_server = gradio.networking.start_server
 
 task = Task.init()
 path = f"/service/{task.id}"
 
-response = requests.get("https://ipinfo.io")
-if response.status_code != 200:
-    raise Exception("error retrieving ip")
-ip = response.json()["ip"]
+ip = subprocess.check_output('hostname -I', shell=True).split()[0].decode('utf-8')
 task._set_runtime_properties({"_SERVICE": "EXTERNAL", "_ADDRESS": ip, "_PORT": 7860})
 task.set_system_tags(["external_service"])
 print(f"path: {path}")
