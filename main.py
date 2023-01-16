@@ -1,7 +1,5 @@
 import gradio
 
-import patching
-
 
 def greet(name):
     return "Hello " + name + "!"
