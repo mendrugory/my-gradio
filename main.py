@@ -1,4 +1,7 @@
 import gradio
+from clearml import Task
+
+task = Task.init()
 
 
 def greet(name):
