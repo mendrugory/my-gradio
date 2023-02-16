@@ -1,7 +1,7 @@
 import gradio
 from clearml import Task
 
-task = Task.init()
+task = Task.init(project_name="gonzaloproject", task_name="gradiosupertask")
 
 
 def greet(name):
